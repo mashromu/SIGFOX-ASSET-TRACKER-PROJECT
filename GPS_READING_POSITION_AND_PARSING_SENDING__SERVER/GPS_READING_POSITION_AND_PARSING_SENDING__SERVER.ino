@@ -8,7 +8,7 @@
 #define GPS_Info_buffer_size 128
 #define waiting_time 15
 
-bool debug=false;
+bool debug=false;// to display values on the serial monitor set the debug to true 
 
 TinyGPS gps;//create an object for the TinyGPS class
             //gps is the object
@@ -96,7 +96,8 @@ String ConvertGPSdata(const void* data, uint8_t len) {
 
   if (debug) {
     Serial.println("");
-    Serial.print("String to send: "); Serial.println(cadena);
+    Serial.print("String to send: "); 
+    Serial.println(cadena);
   }
 
   return cadena;
@@ -152,24 +153,23 @@ String GetGPSposition(){
         gps.crack_datetime(&year, &month, &day,&hour,&minute,&second, &hundredths);
         
         if (debug) {
-          Serial.println();
+        Serial.println();
           Serial.println();
           Serial.print("Latitud/Longitud: ");
           Serial.print(latitude, 5);
           Serial.print(", ");
           Serial.println(longitude, 5);
           Serial.println();
-          Serial.print("Fecha: "); Serial.print(day, DEC); Serial.print("/");
+          Serial.print("DATE: "); Serial.print(day, DEC); Serial.print("/");
           Serial.print(month, DEC); Serial.print("/"); Serial.print(year);
-          Serial.print(" Hora: "); Serial.print(hour, DEC); Serial.print(":");
+          Serial.print(" TIME: "); Serial.print(hour, DEC); Serial.print(":");
           Serial.print(minute, DEC); Serial.print(":"); Serial.print(second, DEC);
           Serial.print("."); Serial.println(hundredths, DEC);
-          Serial.print("Altitud (metros): "); Serial.println(gps.f_altitude());
-          Serial.print("Rumbo (grados): "); Serial.println(gps.f_course());
-          Serial.print("Velocidad(kmph): "); Serial.println(gps.f_speed_kmph());
+          Serial.print("Altitude (METERS): "); Serial.println(gps.f_altitude());
+          Serial.print("Dierecion(gradient: "); Serial.println(gps.f_course());
+          Serial.print("Velocity(kmph): "); Serial.println(gps.f_speed_kmph());
           Serial.print("Satelites: "); Serial.println(gps.satellites());
           Serial.println();
-
         }
 
         gps.stats(&chars, &sentences, &failed_checksum);
@@ -181,12 +181,12 @@ String GetGPSposition(){
     }
   
   }
-  pos="NO Signal";
+  pos="NO Signal";/////////
   }
 //now to set up the MKR1200 TO ALLOW FOR TRANSMITTING AND RECEIVING
 //FROM AND TO THE SERVER
 
-void SendSigfox(String data)//heres where pos will be fed to be sent to the server
+void SendSigfox(String data)//heres where pos data will be fed to be sent to the server
 {
   if (debug){//if serial monitor use is allowed or in place
     Serial.print("sending...");
