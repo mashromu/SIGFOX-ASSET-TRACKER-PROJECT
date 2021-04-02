@@ -166,7 +166,7 @@ String GetGPSposition(){
           Serial.print(minute, DEC); Serial.print(":"); Serial.print(second, DEC);
           Serial.print("."); Serial.println(hundredths, DEC);
           Serial.print("Altitude (METERS): "); Serial.println(gps.f_altitude());
-          Serial.print("Dierecion(gradient: "); Serial.println(gps.f_course());
+          Serial.print("Direcion(gradient): "); Serial.println(gps.f_course());
           Serial.print("Velocity(kmph): "); Serial.println(gps.f_speed_kmph());
           Serial.print("Satelites: "); Serial.println(gps.satellites());
           Serial.println();
