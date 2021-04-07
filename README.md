@@ -1,2 +1,4 @@
-# SIGFOX-ASSET-TRACKER-PROJECT
-Asset tracking using gps and sigfox_servers
+# SIGFOX-ASSET-TRACKER-VERSION 2.0
+Sigfox tracker file holds the up to date code on the asset tracker project.
+It is able to sends bytes of data to the server in hex format.
+
